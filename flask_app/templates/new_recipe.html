@@ -1,0 +1,18 @@
+{% extends 'base_recipe.html' %}
+{% block title %}Add A New Recipe!{% endblock %}
+{% block process%}new{% endblock %}
+{% block name %}{{recipe['name']}}{% endblock %}
+{% block description %}{{recipe['description']}}{% endblock %}
+{% block instructions %}{{recipe['instructions']}}{% endblock %}
+{% block date_cooked %}{{recipe['date_cooked']}}{% endblock %}
+{% block under_30 %}
+    {% if recipe['under_30'] == 'yes' %}
+        <label><input type="radio" name="under_30" value="yes" checked> Yes </label>
+        <label><input type="radio" name="under_30" value="no"> No</label>
+    {% elif recipe['under_30'] == 'no' %}
+    <label><input type="radio" name="under_30" value="yes"> Yes </label>
+    <label><input type="radio" name="under_30" value="no" checked> No</label>
+    {% else %}
+        {{ super() }}
+    {% endif %}
+{% endblock %}
